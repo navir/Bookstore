@@ -1,2 +1,2 @@
-# bookstore
-Bookstore exercise for back end programming course
+# Bookstore
+Bookstore exercise for Back End Programming course
