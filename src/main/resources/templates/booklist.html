@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <h1>Welcome <span sec:authentication="name"></span>!</h1>
     <h1>Books</h1>
     <table class="table table-striped">
         <tr>
@@ -26,10 +27,14 @@
             <td th:text="${book.publicationYear}"></td>
             <td th:text="${book.category.name}"></td>
             <td><a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-success">Edit</a></td>
-            <td><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>
+            <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>
         </tr>
     </table>
     <a href="/addbook" class="btn btn-success">Add Book</a>
+
+    <form th:action="@{/logout}" method="post">
+		<input class="btn btn-danger" type="submit" value="Sign Out" />
+	</form>
 
     <script th:src="@{/js/jquery.min.js}"></script>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>

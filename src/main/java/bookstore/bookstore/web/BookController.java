@@ -29,7 +29,11 @@ public class BookController {
     @Autowired
     private CategoryRepository crepository;
 
-
+    @RequestMapping(value="/login")
+    public String login() {
+        return "login";
+    }
+    
     //REST hae kaikki kirjat
     @GetMapping("/books")
     public @ResponseBody List<Book> getAllBooksREST() {
